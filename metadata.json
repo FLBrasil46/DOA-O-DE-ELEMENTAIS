@@ -1,0 +1,6 @@
+{
+  "name": "Fila de Trocas Fortnite",
+  "description": "Gerenciador de filas de trocas, doações e sorteios para lives de Fortnite. Suporta 16 elementais, moderação integrada e sincronização em tempo real.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

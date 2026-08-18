@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "Player": {
+      "title": "Player",
+      "description": "Represents a player in the trade queue",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "player_name": { "type": "string" },
+        "precisa_de": { "type": "string" },
+        "status": { "type": "string", "enum": ["waiting", "called", "squad"] },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["id", "player_name", "precisa_de", "status", "timestamp"]
+    },
+    "Doacao": {
+      "title": "Doacao",
+      "description": "Represents a completed donation transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "doador": { "type": "string" },
+        "elemental": { "type": "string" },
+        "receptor": { "type": "string" },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["id", "doador", "elemental", "receptor", "timestamp"]
+    },
+    "Config": {
+      "title": "Config",
+      "description": "System settings and general states",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "vagas_squad": { "type": "number" },
+        "squad_membros": { "type": "array" }
+      },
+      "required": ["id", "vagas_squad", "squad_membros"]
+    },
+    "Ranking": {
+      "title": "Ranking",
+      "description": "Donor ranking score",
+      "type": "object",
+      "properties": {
+        "player_name": { "type": "string" },
+        "points": { "type": "number" }
+      },
+      "required": ["player_name", "points"]
+    }
+  },
+  "firestore": {
+    "/fila/{playerId}": {
+      "schema": "Player",
+      "description": "Collection of players waiting in queue"
+    },
+    "/doacoes/{doacaoId}": {
+      "schema": "Doacao",
+      "description": "Collection of completed donations"
+    },
+    "/settings/{configId}": {
+      "schema": "Config",
+      "description": "App settings like active squad members and spaces"
+    },
+    "/ranking/{playerName}": {
+      "schema": "Ranking",
+      "description": "Collection of ranking points by player name"
+    }
+  }
+}
